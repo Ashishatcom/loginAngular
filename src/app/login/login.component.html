@@ -1,0 +1,36 @@
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 login-form-2">
+            <h3>Login Form </h3>
+            <form [formGroup]="LoginUserData"   (ngSubmit)="onLoginForm()">
+                <div class="form-group" [ngClass]="{'has-error':LoginUserData.get('email').errors && (LoginUserData.get('email').touched || LoginUserData.get('email').dirty)}"> 
+                    <input type="email" required class="form-control" formControlName="email"   placeholder="Your Email *"  />
+                    <span class="text-light" *ngIf="LoginUserData.get('email').errors && (LoginUserData.get('email').touched || LoginUserData.get('email').dirty)">
+                        <span *ngIf="LoginUserData.get('email').errors.required">Email IS Required</span>
+                        <span *ngIf="LoginUserData.get('email').errors.email">Email Must be Valid </span><br>
+                        <span *ngIf="LoginUserData.get('email').errors.pattern">Email must contain valid format . </span>
+                        </span>
+                </div>
+                <br>
+                <div class="form-group"  [ngClass]="{'has-error':LoginUserData.get('password').errors && (LoginUserData.get('password').touched || LoginUserData.get('password').dirty)}">
+                    <input type="password"  class="form-control"  formControlName="password"      placeholder="Your Password *"  />
+                    <span class="text-light" *ngIf="LoginUserData.get('password').errors && (LoginUserData.get('password').touched || LoginUserData.get('password').dirty)">
+                        <span *ngIf="LoginUserData.get('password').errors.required">Password is Required</span>
+                        <span *ngIf="LoginUserData.get('password').errors.minlength">Password Must be Greater than 2 and less than8 </span>
+                        <span *ngIf="LoginUserData.get('password').errors.minlength">Password Must Contain One speical character and one uppercase </span>
+                        </span>
+                </div>
+            <br>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+                <div class="form-group">
+
+                    <a class="nav-link text-white" routerLink="/" >Register</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

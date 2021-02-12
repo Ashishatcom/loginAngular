@@ -1,0 +1,60 @@
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 login-form-1">
+            <h3>Register Form </h3>
+              <form  [formGroup]="RegisterUserData"   (ngSubmit)="onSubmit()" >
+                <div class="form-group"  [ngClass]="{'has-error':RegisterUserData.get('name').errors && (RegisterUserData.get('name').touched || RegisterUserData.get('name').dirty)}">
+                    <label class="control-label">Name</label>
+                    <input type="text"  class="form-control" formControlName="name"  placeholder="Enter Your First Name" value="" />
+                    <span class="text-light" *ngIf="RegisterUserData.get('name').errors && (RegisterUserData.get('name').touched || RegisterUserData.get('name').dirty)">
+                    <span *ngIf="RegisterUserData.get('name').errors.required">First Name Is Required</span>
+                </span>
+                </div>
+                <div class="form-group"  [ngClass]="{'has-error':RegisterUserData.get('lname').errors && (RegisterUserData.get('lname').touched || RegisterUserData.get('lname').dirty)}">
+                    <label class="control-label">Name</label>
+                    <input type="text"  class="form-control" formControlName="lname"  placeholder="Enter Your Last Name" value="" />
+                    <span class="text-light" *ngIf="RegisterUserData.get('lname').errors && (RegisterUserData.get('lname').touched || RegisterUserData.get('lname').dirty)">
+                    <span *ngIf="RegisterUserData.get('lname').errors.required">Last Name Is Required</span>
+                </span>
+                </div>
+                <br>
+                <div class="form-group" [ngClass]="{'has-error':RegisterUserData.get('email').errors && (RegisterUserData.get('email').touched || RegisterUserData.get('email').dirty)}"> 
+                    <input type="email" required class="form-control" formControlName="email"   placeholder="Your Email *"  />
+                    <span class="text-light" *ngIf="RegisterUserData.get('email').errors && (RegisterUserData.get('email').touched || RegisterUserData.get('email').dirty)">
+                        <span *ngIf="RegisterUserData.get('email').errors.required">Email IS Required</span>
+                        <span *ngIf="RegisterUserData.get('email').errors.email">Email Must be Valid </span><br>
+                        <span *ngIf="RegisterUserData.get('email').errors.pattern">Email must contain valid format . </span>
+                        </span>
+                </div>
+                <br>
+                <div class="form-group" [ngClass]="{'has-error':RegisterUserData.get('Phone').errors && (RegisterUserData.get('Phone').touched || RegisterUserData.get('Phone').dirty)}"> 
+                    <input type="Phone" required class="form-control" formControlName="Phone"   placeholder="Your Phone *"  />
+                    <span class="text-light" *ngIf="RegisterUserData.get('Phone').errors && (RegisterUserData.get('Phone').touched || RegisterUserData.get('Phone').dirty)">
+                        <span *ngIf="RegisterUserData.get('Phone').errors.required">Phone IS Required</span>
+                        <span *ngIf="RegisterUserData.get('Phone').errors.Phone">Phone Must be Valid </span><br>
+                        <span *ngIf="RegisterUserData.get('Phone').errors.pattern">Phone must contain valid format . </span>
+                        </span>
+                </div>
+                <br>
+                <div class="form-group"  [ngClass]="{'has-error':RegisterUserData.get('passwords').errors && (RegisterUserData.get('passwords').touched || RegisterUserData.get('passwords').dirty)}">
+                    <input type="password"  class="form-control"  formControlName="passwords"      placeholder="Your Passwords *"  />
+                    <span class="text-light" *ngIf="RegisterUserData.get('passwords').errors && (RegisterUserData.get('passwords').touched || RegisterUserData.get('passwords').dirty)">
+                        <span *ngIf="RegisterUserData.get('passwords').errors.required">Passwords is Required</span>
+                        <span *ngIf="RegisterUserData.get('passwords').errors.minlength">Passwords Must be Greater than 2 and less than8 </span>
+                        <span *ngIf="RegisterUserData.get('passwords').errors.minlength">Passwords Must Contain One speical character and one uppercase </span>
+                        </span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="submit"  [disabled]="!RegisterUserData.valid" class="btnSubmit" value="Register" />
+                </div>
+                <div class="form-group">
+
+                    <a class="nav-link text-white" routerLink="/login" routerLinkActive="active">Login</a>
+                </div>
+            </form> 
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
